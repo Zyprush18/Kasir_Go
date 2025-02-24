@@ -1,9 +1,15 @@
 package routes
 
-import "net/http"
+import (
+	"fmt"
+	"net/http"
+
+	"github.com/Zyprush18/Kasir_Go.git/src/Controllers"
+)
 
 func Route() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello World"))
-	})
+	http.HandleFunc("/", controllers.Hello)
+
+	fmt.Println("Server started at http://localhost:8080")
+	http.ListenAndServe(":8080", nil)
 }
