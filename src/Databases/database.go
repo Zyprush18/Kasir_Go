@@ -1,20 +1,32 @@
 package databases
 
 import (
-	"database/sql"
 	"fmt"
-
-	_ "github.com/go-sql-driver/mysql"
+	models "github.com/Zyprush18/Kasir_Go.git/src/Models"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 )
 
+var DB *gorm.DB
+
 func Connect() {
-	db, err := sql.Open("mysql", "root:@tcp(localhost:3306)/belajar_net_http")
+	var err error
+	dsn := "root:@tcp(localhost:3306)/belajar_net_http?charset=utf8mb4&parseTime=True&loc=Local"
+	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
-		panic(err.Error())
-	}else{
-		fmt.Println("Database connected")
+		panic("Failed to connect to database!")
 	}
 
-	defer db.Close()
+	fmt.Println("Database connected!")
+
+
+	// migration
+	if err := DB.AutoMigrate(models.User{}); err != nil{
+		panic(
+			"Failed to migrate database!",
+		)
+	}
+	fmt.Println("Database migrated!")
+
 }

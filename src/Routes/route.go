@@ -8,7 +8,16 @@ import (
 )
 
 func Route() {
-	http.HandleFunc("/", controllers.Hello)
+	// user
+	http.HandleFunc("/user", controllers.ShowAllUser)
+	http.HandleFunc("/user/created", controllers.CreateUser)
+
+
+
+
+
+
+
 
 	fmt.Println("Server started at http://localhost:8080")
 	http.ListenAndServe(":8080", nil)
