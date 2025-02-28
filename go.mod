@@ -1,4 +1,4 @@
-module github.com/Zyprush18/Kasir_Go.git
+module github.com/Zyprush18/Kasir_Go
 
 go 1.23.4
 

@@ -2,7 +2,7 @@ package models
 
 type Messages struct {
 	Messages string `json:"messages"`
-	Data    []User `json:"data"`
+	Data    []User `json:"data,omitempty"`
 }
 
 type User struct {

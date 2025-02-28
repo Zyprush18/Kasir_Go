@@ -2,7 +2,8 @@ package databases
 
 import (
 	"fmt"
-	models "github.com/Zyprush18/Kasir_Go.git/src/Models"
+
+	models "github.com/Zyprush18/Kasir_Go/src/Models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -20,9 +21,8 @@ func Connect() {
 
 	fmt.Println("Database connected!")
 
-
 	// migration
-	if err := DB.AutoMigrate(models.User{}); err != nil{
+	if err := DB.AutoMigrate(models.User{}); err != nil {
 		panic(
 			"Failed to migrate database!",
 		)
